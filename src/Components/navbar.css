@@ -1,0 +1,98 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    height: 100vh;
+    background-color: #242531;
+    justify-content: space-between;
+}
+
+.nav .top .sub img {
+    color: white;
+    margin: 10px;
+    height: 17px;
+    width: 17px;
+}
+
+.sub {
+    display: flex;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+.nav>.top>img:first-child {
+    height: 30px;
+    width: 30px;
+    margin: 15px 0px 15px 10px;
+}
+
+.nav hr {
+
+    border: none;
+    border-top: 2px solid #424457;
+}
+
+.profile {
+    display: flex;
+    margin: 25px 0px 25px 0px;
+    align-items: center;
+
+}
+
+.profile h4 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    display: inline;
+}
+
+.profile img {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.sub h4 {
+    color: #fff;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 10px;
+
+}
+
+.sub.active {
+    background-color: #3a3b4a;
+    border-radius: 8px;
+}
+
+
+.top {
+    display: flex;
+    flex-direction: column;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+
+
+
+}

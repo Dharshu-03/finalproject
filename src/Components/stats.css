@@ -1,0 +1,77 @@
+.stats {
+    display: flex;
+}
+
+.main {
+    width: calc(100% - 220px);
+    background-color: #424457;
+}
+
+.statstop {
+    display: flex;
+    flex-direction: row;
+}
+
+.statsbottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.main h3 {
+    margin: 22px 0px 22px 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 16px;
+    color: #FFFFFF;
+
+
+}
+
+.main hr {
+    border: none;
+    border: 1px solid #fff;
+}
+
+.element {
+    height: 150px;
+    width: 360px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25), 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 18px;
+
+}
+
+.element:nth-child(1 of .element) {
+    background-color: #FAD85D;
+}
+
+.element:nth-child(2 of .element) {
+    background-color: #0BF4C8;
+}
+
+.element:nth-child(3 of .element) {
+    background-color: #F2A0FF;
+}
+
+.sales {
+    width: 808px;
+    height: 600px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    margin: 18px;
+}
+
+.products {
+    width: 307px;
+    height: 600px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    margin: 18px;
+}

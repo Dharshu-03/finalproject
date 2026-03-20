@@ -1,0 +1,94 @@
+.settings {
+    display: flex;
+    flex-direction: row;
+    background-color: pink;
+    height: 100vh;
+}
+
+.main hr {
+    border: none;
+    border: 1px solid #9F9F9F;
+    box-sizing: border-box;
+}
+
+.settings h3 {
+    margin: 25px 0px 25px 10px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 16px;
+    color: #FFFFFF;
+}
+
+.main {
+    width: calc(100% - 220px);
+    background-color: #424457;
+}
+
+
+.main label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.2822px;
+    line-height: 26px;
+    color: #5E5E5E;
+    margin-left: 50px;
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+
+.tab {
+    background-color: #fff;
+    height: 717px;
+    margin: 10px 0px 0px 10px;
+    box-sizing: border-box;
+    padding-top: 50px;
+    position: relative;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 605.41;
+}
+
+.tab h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #292929;
+    margin-left: 80px;
+    margin-bottom: 10px;
+
+}
+
+.tab input {
+    box-sizing: border-box;
+    width: 500.31px;
+    height: 52.47px;
+    border: 0.936902px solid #3E3E3E;
+    border-radius: 11.2428px;
+    margin-left: 50px;
+    background-color: #fff;
+    padding: 0px;
+}
+
+.tab .btn {
+    width: 205.41px;
+    height: 50px;
+    background-color: #242531;
+    color: #fff;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    padding: 0px;
+
+
+}

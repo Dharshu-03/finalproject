@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Login from './Components/Login'
+import Signup from './Components/Signup';
+import Forgot from './Components/Forgot';
+import Otp from './Components/Otp';
+import Reset from './Components/Reset';
+import Home from './Components/Home';
+import Product from './Components/Product';
+import Setting from './Components/Settings';
+import Invoice from './Components/Invoice';
+import Stats from './Components/Stats';
+
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot" element={<Forgot />} />
+          <Route path="/otp" element={<Otp />} />
+          <Route path="/reset" element={<Reset />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/settings" element={<Setting />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/invoice" element={<Invoice />}></Route>
+          <Route path="/stats" element={<Stats />}></Route>
+        </Routes>
+      </Router>
+
+    </>
   );
 }
 
