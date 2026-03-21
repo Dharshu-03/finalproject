@@ -51,10 +51,17 @@
 }
 
 form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+
+.content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 605.41;
+    justify-content: space-around;
+    height: 605.41px;
 }
 
 .tab h2 {
@@ -80,14 +87,14 @@ form {
     padding: 0px;
 }
 
-.tab .btn {
+form .btn {
     width: 205.41px;
     height: 50px;
     background-color: #242531;
     color: #fff;
     position: absolute;
-    bottom: 40px;
-    right: 40px;
+    bottom: 60px;
+    right: 50px;
     padding: 0px;
 
 

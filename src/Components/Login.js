@@ -12,7 +12,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!email || !password) {
+        if (!email.trim() || !password.trim()) {
             return setError("All fields are required");
         }
 
@@ -22,8 +22,9 @@ function Login() {
                 email,
                 password,
             });
-
+            localStorage.setItem("email", res.data.user.email);
             localStorage.setItem("token", res.data.token);
+
             alert("Login successful");
             navigate("/home")
 

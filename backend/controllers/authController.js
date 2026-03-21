@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 // Signup
 exports.signup = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, fname, lname } = req.body;
 
     try {
         const userExists = await User.findOne({ email });
@@ -12,7 +12,7 @@ exports.signup = async (req, res) => {
 
         const hashed = await bcrypt.hash(password, 10);
 
-        const user = await User.create({ email, password: hashed });
+        const user = await User.create({ email, password: hashed, fname, lname });
 
         res.json({ msg: "User created" });
     } catch (err) {
@@ -102,6 +102,57 @@ exports.resetPassword = async (req, res) => {
 
     } catch (err) {
         console.error(err);
+        res.status(500).json({ msg: "Server error" });
+    }
+};
+
+exports.getUser = async (req, res) => {
+    const { email } = req.params;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ msg: "User not found" });
+        }
+
+        res.json({
+            email: user.email,
+            fname: user.fname,
+            lname: user.lname
+        });
+
+    } catch (err) {
+        res.status(500).json({ msg: "Server error" });
+    }
+};
+
+
+exports.updateProfile = async (req, res) => {
+    const { email, password, fname, lname } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ msg: "User not found" });
+        }
+
+        // ✅ update names
+        user.fname = fname;
+        user.lname = lname;
+
+        // ✅ update password ONLY if provided
+        if (password && password.trim() !== "") {
+            const hashed = await bcrypt.hash(password, 10);
+            user.password = hashed;
+        }
+
+        await user.save();
+
+        res.json({ msg: "Profile updated successfully" });
+
+    } catch (err) {
         res.status(500).json({ msg: "Server error" });
     }
 };

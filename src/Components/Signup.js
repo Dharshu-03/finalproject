@@ -9,6 +9,8 @@ function Signup() {
     const [confirm, setConfirm] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    var fname = "";
+    var lname = "";
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,7 +20,7 @@ function Signup() {
         if (password !== confirm) return setError("Passwords do not match");
 
         try {
-            await API.post("/signup", { email, password });
+            await API.post("/signup", { email, password, fname, lname });
             alert("Signup success");
             navigate("/");
         } catch (err) {
