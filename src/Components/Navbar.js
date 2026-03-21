@@ -8,30 +8,30 @@ const Navbar = () => {
         <>
             <div className='nav'>
                 <div className="top">
-                    <img src="./images/circle.png" alt="" />
+                    <img src="/images/circle.png" alt="" />
 
                     <hr />
                     <Link to="/home">  <div className="sub">
-                        <img src="./images/home1.png" alt="" />
+                        <img src="/images/home1.png" alt="" />
                         <h4>Home</h4>
                     </div>
                     </Link>
                     <Link to="/product">  <div className="sub">
-                        <img src="./images/product.png" alt="" />
+                        <img src="/images/product.png" alt="" />
                         <h4>Product</h4>
                     </div></Link>
                     <Link to="/invoice"><div className="sub">
-                        <img src="./images/invoice.png" alt="" />
+                        <img src="/images/invoice.png" alt="" />
                         <h4>Invoice</h4>
                     </div></Link>
 
                     <Link to="/stats"> <div className="sub">
-                        <img src="./images/stats.png" alt="" />
+                        <img src="/images/stats.png" alt="" />
                         <h4>Statistics</h4>
                     </div></Link>
 
                     <Link to="/settings"><div className="sub">
-                        <img src="./images/settings.png" alt="" />
+                        <img src="/images/settings.png" alt="" />
                         <h4>Settings</h4>
                     </div></Link>
 
@@ -40,7 +40,7 @@ const Navbar = () => {
                     <hr />
                     <div className="profile">
 
-                        <img src="./images/profile.jpg" alt="" />
+                        <img src="/images/profile.jpg" alt="" />
                         <h4>aaaaaa</h4>
                     </div>
                 </div>

@@ -1,40 +1,83 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import AuthLayout from './Layout.js'
+import AuthLayout from './Layout.js';
+import { useNavigate } from 'react-router-dom';
+import API from "../api.js";
 
-function LoginPage() {
+function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!email || !password) {
+            return setError("All fields are required");
+        }
+
+
+        try {
+            const res = await API.post("/login", {
+                email,
+                password,
+            });
+
+            localStorage.setItem("token", res.data.token);
+            alert("Login successful");
+            navigate("/home")
+
+
+        } catch (err) {
+            setError(err.response?.data?.msg || "Login failed");
+        }
+    };
+
     return (
         <AuthLayout image="/images/login.png" text="Welcome to photontech">
-
-
             <h2>Log in to your account</h2>
             <p>Welcome back! Please enter your details.</p>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="input-group">
                     <label>Email</label>
-                    <input type="email" placeholder="Example@email.com" />
+                    <input
+                        type="email"
+                        placeholder="Example@email.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
 
                 <div className="input-group">
                     <label>Password</label>
-                    <input type="password" placeholder="at least 8 characters" />
+                    <input
+                        type="password"
+                        placeholder="at least 8 characters"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
                     <div className="forgot">
-                        <Link to="/forgot" className="link">  Forgot Password?</Link>
+                        <Link to="/forgot" className="link">
+                            Forgot Password?
+                        </Link>
                     </div>
                 </div>
 
-                <Link to="/home" className="link">  <button type="submit" className="btn">Sign In</button></Link>
+                {error && <div className="error">{error}</div>}
+
+                <button type="submit" className="btn">
+                    Sign In
+                </button>
             </form>
 
             <p className="signup-text">
-                Do you have an account? <Link to="/signup" className="link">Sign Up</Link>
+                Don't have an account?{" "}
+                <Link to="/signup" className="link">Sign Up</Link>
             </p>
-
-
-        </AuthLayout >
+        </AuthLayout>
     );
 }
 
-export default LoginPage;
+export default Login;

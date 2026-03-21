@@ -26,11 +26,15 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/product" element={<Product />} />
           <Route path="/settings" element={<Setting />} />
-          <Route path="/product" element={<Product />} />
           <Route path="/invoice" element={<Invoice />}></Route>
           <Route path="/stats" element={<Stats />}></Route>
         </Routes>
       </Router>
+
+      {/* <div style={{ background: "white", color: "black", padding: "20px" }}>
+        <h1>APP IS WORKING</h1>
+      </div> */}
+
 
     </>
   );

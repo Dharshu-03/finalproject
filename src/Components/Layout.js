@@ -14,7 +14,7 @@ function Layout({ children, text, image }) {
                 {text && (
                     <div className="cname">
                         <h1>{text}</h1>
-                        <img src="./images/circle.png" alt="" />
+                        <img src="/images/circle.png" alt="" />
                     </div>)}
 
                 <img src=

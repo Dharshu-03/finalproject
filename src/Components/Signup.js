@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import AuthLayout from './Layout'
-
+import { Link, useNavigate } from 'react-router-dom';
+import AuthLayout from './Layout';
+import API from "../api.js"
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -11,28 +10,64 @@ function Signup() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (!email.includes("@")) return setError("Invalid email");
         if (password.length < 8) return setError("Password too short");
         if (password !== confirm) return setError("Passwords do not match");
-        setError("");
-        navigate("/otp");
+
+        try {
+            await API.post("/signup", { email, password });
+            alert("Signup success");
+            navigate("/");
+        } catch (err) {
+            setError(err.response?.data?.msg || "Error");
+        }
     };
 
     return (
         <AuthLayout image="/images/signup.png" text="Welcome to photontech">
             <h2>Create an account</h2>
             <p>Start inventory management.</p>
+
             <form onSubmit={handleSubmit}>
-                <div className="input-group"><label>Email</label><input value={email} onChange={e => setEmail(e.target.value)} /></div>
-                <div className="input-group"><label>Password</label><input type="password" value={password} onChange={e => setPassword(e.target.value)} /></div>
-                <div className="input-group"><label>Confirm</label><input type="password" value={confirm} onChange={e => setConfirm(e.target.value)} /></div>
+                <div className="input-group">
+                    <label>Email</label>
+                    <input
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                </div>
+
+                <div className="input-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                </div>
+
+                <div className="input-group">
+                    <label>Confirm</label>
+                    <input
+                        type="password"
+                        value={confirm}
+                        onChange={e => setConfirm(e.target.value)}
+                    />
+                </div>
+
                 {error && <div className="error">{error}</div>}
-                <Link to="/" className="link">   <button className="btn">Sign up</button></Link >
+
+                <button type="submit" className="btn">
+                    Sign up
+                </button>
             </form>
+
             <div className="text-center">
-                Already have account? <Link to="/" className="link">Sign In</Link>
+                Already have account?{" "}
+                <Link to="/" className="link">Sign In</Link>
             </div>
         </AuthLayout>
     );
