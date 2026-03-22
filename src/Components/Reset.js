@@ -20,7 +20,7 @@ function Reset() {
         if (p !== c) return setError("Mismatch");
 
         try {
-            const res = await API.post("/reset", {
+            const res = await API.post("/api/auth/reset", {
                 email,
                 password: p
             });

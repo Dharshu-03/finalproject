@@ -18,7 +18,7 @@ function Login() {
 
 
         try {
-            const res = await API.post("/login", {
+            const res = await API.post("/api/auth/login", {
                 email,
                 password,
             });

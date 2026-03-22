@@ -6,7 +6,8 @@ import Forgot from './Components/Forgot';
 import Otp from './Components/Otp';
 import Reset from './Components/Reset';
 import Home from './Components/Home';
-import Product from './Components/Product';
+import Product from './Components/products/Product';
+import AddIndividualProduct from "./Components/products/AddIndividualProduct";
 import Setting from './Components/Settings';
 import Invoice from './Components/Invoice';
 import Stats from './Components/Stats';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/reset" element={<Reset />} />
           <Route path="/home" element={<Home />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/add-individual" element={<AddIndividualProduct />} />
           <Route path="/settings" element={<Setting />} />
           <Route path="/invoice" element={<Invoice />}></Route>
           <Route path="/stats" element={<Stats />}></Route>

@@ -20,7 +20,7 @@ function Signup() {
         if (password !== confirm) return setError("Passwords do not match");
 
         try {
-            await API.post("/signup", { email, password, fname, lname });
+            await API.post("/api/auth/signup", { email, password, fname, lname });
             alert("Signup success");
             navigate("/");
         } catch (err) {

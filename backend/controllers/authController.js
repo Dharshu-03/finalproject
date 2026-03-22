@@ -1,9 +1,9 @@
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import User from "../models/User.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 // Signup
-exports.signup = async (req, res) => {
+export const signup = async (req, res) => {
     const { email, password, fname, lname } = req.body;
 
     try {
@@ -12,7 +12,7 @@ exports.signup = async (req, res) => {
 
         const hashed = await bcrypt.hash(password, 10);
 
-        const user = await User.create({ email, password: hashed, fname, lname });
+        await User.create({ email, password: hashed, fname, lname });
 
         res.json({ msg: "User created" });
     } catch (err) {
@@ -21,32 +21,26 @@ exports.signup = async (req, res) => {
 };
 
 // Login
-
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        // 1. Check if email exists
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({ msg: "Invalid email or password" });
         }
 
-        // 2. Compare entered password with hashed password
         const isMatch = await bcrypt.compare(password, user.password);
-
         if (!isMatch) {
             return res.status(400).json({ msg: "Invalid email or password" });
         }
 
-        // 3. Create JWT token
         const token = jwt.sign(
             { id: user._id },
             process.env.JWT_SECRET || "secret",
             { expiresIn: "1d" }
         );
 
-        // 4. Send response
         res.json({
             msg: "Login successful",
             token,
@@ -57,12 +51,12 @@ exports.login = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
         res.status(500).json({ msg: "Server error" });
     }
 };
 
-exports.forgotPassword = async (req, res) => {
+// Forgot Password
+export const forgotPassword = async (req, res) => {
     const { email } = req.body;
 
     try {
@@ -72,17 +66,15 @@ exports.forgotPassword = async (req, res) => {
             return res.status(400).json({ msg: "Email not registered" });
         }
 
-        // You can later add OTP logic here
         res.json({ msg: "Email verified" });
 
     } catch (err) {
-        console.error(err);
         res.status(500).json({ msg: "Server error" });
     }
 };
 
-
-exports.resetPassword = async (req, res) => {
+// Reset Password
+export const resetPassword = async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -92,21 +84,20 @@ exports.resetPassword = async (req, res) => {
             return res.status(400).json({ msg: "User not found" });
         }
 
-        // hash new password
         const hashed = await bcrypt.hash(password, 10);
-
         user.password = hashed;
+
         await user.save();
 
         res.json({ msg: "Password updated successfully" });
 
     } catch (err) {
-        console.error(err);
         res.status(500).json({ msg: "Server error" });
     }
 };
 
-exports.getUser = async (req, res) => {
+// Get User
+export const getUser = async (req, res) => {
     const { email } = req.params;
 
     try {
@@ -127,8 +118,8 @@ exports.getUser = async (req, res) => {
     }
 };
 
-
-exports.updateProfile = async (req, res) => {
+// Update Profile
+export const updateProfile = async (req, res) => {
     const { email, password, fname, lname } = req.body;
 
     try {
@@ -138,11 +129,9 @@ exports.updateProfile = async (req, res) => {
             return res.status(400).json({ msg: "User not found" });
         }
 
-        // ✅ update names
         user.fname = fname;
         user.lname = lname;
 
-        // ✅ update password ONLY if provided
         if (password && password.trim() !== "") {
             const hashed = await bcrypt.hash(password, 10);
             user.password = hashed;
