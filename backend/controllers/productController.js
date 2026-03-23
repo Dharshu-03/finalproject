@@ -19,7 +19,7 @@ export default upload;
 // ✅ Add single product
 export const addProduct = async (req, res) => {
     try {
-        const product = new Product(req.body);
+        const product = new Product({ ...req.body, userId: req.userId }); // ✅
         await product.save();
         res.status(201).json(product);
     } catch (err) {
@@ -44,8 +44,8 @@ export const uploadCSV = (req, res) => {
     fs.createReadStream(req.file.path)
         .pipe(csv())
         .on("data", (data) => {
-            console.log("RAW ROW:", data);
             results.push({
+                userId: req.userId, // ✅ add this
                 name: data.name,
                 productId: data.productId,
                 category: data.category,
@@ -76,3 +76,4 @@ export const uploadCSV = (req, res) => {
 
         });
 };
+
