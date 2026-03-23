@@ -26,7 +26,7 @@ function Forgot() {
     return (
         <AuthLayout image="/images/Login3.png" text="">
             <h2>Company Name</h2>
-            <p>
+            <p className="fmobile">
                 Please enter your registered email ID to receive an OTP
             </p>
             <form onSubmit={handleSubmit}>

@@ -212,3 +212,118 @@ input {
     text-decoration: none;
     color: #FFFFFF;
 }
+
+
+
+@media (max-width: 425px) {
+    .cname h1 {
+        font-size: 17px;
+    }
+
+    .right {
+        display: none;
+    }
+
+    .cname img {
+        height: 42px;
+        width: 42px;
+    }
+
+    h2 {
+        width: 323px;
+        height: 38px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 38px;
+        /* identical to box height, or 127% */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #2B2F38;
+
+    }
+
+    label {
+
+
+        height: 16px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        /* identical to box height, or 16px */
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.01em;
+
+        /* Primary text */
+        color: #0C1421;
+
+    }
+
+    .left {
+        border-radius: 0px;
+    }
+
+    .form-box {
+        width: 388px;
+        height: 499px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .input-group {
+        margin-left: 30px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
+
+    input {
+        /* Input */
+
+        width: 320px;
+        height: 48px;
+
+    }
+
+    form .btn {
+        height: 48px;
+        font-size: 16px;
+        position: static;
+        width: 205.41px;
+        background-color: #242531;
+        color: #fff;
+        position: static;
+        padding: 0px;
+    }
+
+    .fmobile {
+
+        width: 320px;
+
+
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 160%;
+        /* or 32px */
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.01em;
+
+        color: #313957;
+    }
+}

@@ -22,7 +22,7 @@ export const signup = async (req, res) => {
 
 // Login
 export const login = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, fname } = req.body;
 
     try {
         const user = await User.findOne({ email });
@@ -47,6 +47,7 @@ export const login = async (req, res) => {
             user: {
                 id: user._id,
                 email: user.email,
+                fname: user.fname
             },
         });
 

@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import './navbar.css'
 import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        if (storedUser) {
+            setUser(storedUser);
+        }
+    }, []);
     return (
         <>
             <div className='nav'>
@@ -41,7 +49,7 @@ const Navbar = () => {
                     <div className="profile">
 
                         <img src="/images/profile.jpg" alt="" />
-                        <h4>aaaaaa</h4>
+                        <h4>{user ? user.fname : "User"}</h4>
                     </div>
                 </div>
             </div>

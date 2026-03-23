@@ -24,6 +24,8 @@ function Login() {
             });
             localStorage.setItem("email", res.data.user.email);
             localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user", JSON.stringify(res.data.user));
+
 
             alert("Login successful");
             navigate("/home")

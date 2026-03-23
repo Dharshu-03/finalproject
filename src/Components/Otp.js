@@ -17,12 +17,14 @@ function Otp() {
 
             navigate("/reset", { state: { email } });
         }
+
     }
 
     return (
         <AuthLayout image="/images/otppic.png" text="">
+
             <h2>Enter Your OTP</h2>
-            <p>We’ve sent a 6-digit OTP to your registered mail.Please enter it below to sign in.</p>
+            <p className="fmobile">We’ve sent a 6-digit OTP to your registered mail.Please enter it below to sign in.</p>
             <div className="input-group">
                 <label htmlFor="">E-mail</label>
                 <input value={password} onChange={e => setOtp(e.target.value)} placeholder="xxxx05" /></div>

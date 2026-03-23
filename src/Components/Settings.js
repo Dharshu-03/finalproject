@@ -32,7 +32,7 @@ const Settings = () => {
 
         const fetchUser = async () => {
             try {
-                const res = await API.get(`/user/${storedEmail}`);
+                const res = await API.get(`/api/auth/user/${storedEmail}`);
 
                 setfname(res.data.fname || "");
                 setlname(res.data.lname || "");
