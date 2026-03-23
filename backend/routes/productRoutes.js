@@ -34,11 +34,20 @@ router.get("/", auth, async (req, res) => {
         const page = parseInt(req.query.page) || 1;
         const limit = 10;
         const skip = (page - 1) * limit;
-        const total = await Product.countDocuments({ userId: req.userId });
-        const products = await Product.find({ userId: req.userId })
+        const search = req.query.search || "";
+
+        // Build query — case-insensitive search on name if provided
+        const query = { userId: req.userId };
+        if (search.trim()) {
+            query.name = { $regex: search.trim(), $options: "i" };
+        }
+
+        const total = await Product.countDocuments(query);
+        const products = await Product.find(query)
             .sort({ _id: -1 })
             .skip(skip)
             .limit(limit);
+
         res.json({ products, total, page, totalPages: Math.ceil(total / limit) });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -81,7 +90,7 @@ router.patch("/:id/buy", auth, async (req, res) => {
 router.get("/top-products", auth, async (req, res) => {
     try {
         const products = await Product.find({ userId: req.userId })
-            .sort({ quantity: 1 }) // least quantity = most sold/top selling
+            .sort({ quantity: 1 })
             .limit(6);
         res.json(products);
     } catch (err) {

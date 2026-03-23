@@ -107,6 +107,7 @@ td {
     border-style: solid;
     border-collapse: collapse;
     text-align: center;
+
 }
 
 .pagination {
@@ -255,6 +256,7 @@ td {
     padding: 0 6px;
     color: #383E49;
     line-height: 1;
+
 }
 
 .ellipsis-popup {
