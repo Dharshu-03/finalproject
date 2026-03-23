@@ -13,13 +13,17 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
-
 export default upload;
 
 // ✅ Add single product
 export const addProduct = async (req, res) => {
     try {
-        const product = new Product({ ...req.body, userId: req.userId }); // ✅
+        const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
+        const product = new Product({
+            ...req.body,
+            userId: req.userId,
+            image: imagePath
+        });
         await product.save();
         res.status(201).json(product);
     } catch (err) {

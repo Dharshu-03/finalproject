@@ -78,4 +78,17 @@ router.patch("/:id/buy", auth, async (req, res) => {
     }
 });
 
+router.get("/top-products", auth, async (req, res) => {
+    try {
+        const products = await Product.find({ userId: req.userId })
+            .sort({ quantity: 1 }) // least quantity = most sold/top selling
+            .limit(6);
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+router.post("/add", auth, upload.single("image"), addProduct);
+
 export default router;

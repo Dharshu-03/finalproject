@@ -41,10 +41,41 @@
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25), 0px 1px 2px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
-    flex: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     order: 0;
     flex-grow: 0;
     margin: 18px;
+    padding: 20px;
+
+}
+
+.element .statheading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statheading h5 {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.03em;
+    color: #020617;
+}
+
+.element h2 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: #020617;
+    margin: 10px 0px;
 
 }
 
@@ -74,4 +105,79 @@
     background: #FFFFFF;
     border-radius: 10px;
     margin: 18px;
+}
+
+.statsbottom h5 {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    margin: 20px;
+
+}
+
+.statsbottom h3 {
+
+    width: 165px;
+    height: 30px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #383E49;
+    margin: 20px;
+
+
+}
+
+.weekly-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1px solid #D0D3D9;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 20px;
+    color: #383E49;
+}
+
+.top-products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px;
+}
+
+.top-product-item {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 8px;
+    border-radius: 8px;
+    background: #f9fafc;
+}
+
+.top-product-name {
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 500;
+    color: #383E49;
+    margin-bottom: 4px;
+}
+
+.top-product-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.cal {
+    height: 20px;
+    width: 20px;
 }

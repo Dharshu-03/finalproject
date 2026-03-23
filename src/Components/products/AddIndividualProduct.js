@@ -13,30 +13,33 @@ const AddIndividualProduct = () => {
     const [unit, setUnit] = useState("");
     const [expiryDate, setExpiryDate] = useState("");
     const [threshold, setThreshold] = useState("");
+    const [imageFile, setImageFile] = useState(null);
 
     const handleImage = (e) => {
         if (e.target.files[0]) {
             setImage(URL.createObjectURL(e.target.files[0]));
+            setImageFile(e.target.files[0]); // ✅ store actual file
         }
     };
-
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            await API.post("/api/products/add", {
-                name,
-                productId,
-                category,
-                price: Number(price),
-                quantity: Number(quantity),
-                unit,
-                expiryDate,
-                threshold: Number(threshold)
-            });
+            const formData = new FormData();
+            formData.append("name", name);
+            formData.append("productId", productId);
+            formData.append("category", category);
+            formData.append("price", Number(price));
+            formData.append("quantity", Number(quantity));
+            formData.append("unit", unit);
+            formData.append("expiryDate", expiryDate);
+            formData.append("threshold", Number(threshold));
+            if (imageFile) formData.append("image", imageFile); // ✅ attach image
 
+            await API.post("/api/products/add", formData, {
+                headers: { "Content-Type": "multipart/form-data" }
+            });
 
             alert("Product added successfully");
             setName("");
@@ -47,9 +50,11 @@ const AddIndividualProduct = () => {
             setUnit("");
             setExpiryDate("");
             setThreshold("");
-            setImage("");
+            setImage(null);
+            setImageFile(null);
         } catch (err) {
             console.error(err);
+            alert("Failed to add product");
         }
     };
 
