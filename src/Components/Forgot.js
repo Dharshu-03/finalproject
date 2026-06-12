@@ -14,7 +14,7 @@ function Forgot() {
             return setError("Email is required");
         }
         try {
-            await API.post("/api/auth/forgot", { email });
+            await API.post("/auth/forgot", { email });
             navigate("/Otp", { state: { email } });
         }
         catch (err) {

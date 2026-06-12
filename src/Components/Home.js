@@ -32,7 +32,7 @@ const Home = () => {
     const fetchStats = async () => {
         try {
             // --- Product stats ---
-            const productStatsRes = await API.get("/api/products/stats");
+            const productStatsRes = await API.get("/products/stats");
             const { totalProducts, totalAmount, categories } = productStatsRes.data;
 
             setProductsInStock(totalProducts);  // Inventory > In Stock
@@ -41,7 +41,7 @@ const Home = () => {
             setTotalCategories(categories);     // Product Summary > Categories
 
             // --- Invoice stats ---
-            const invoiceStatsRes = await API.get("/api/invoices/stats");
+            const invoiceStatsRes = await API.get("/invoices/stats");
             const { totalInvoices: invCount, totalAmount: invAmount } = invoiceStatsRes.data;
 
             setTotalInvoices(invCount);         // Purchase Overview > Purchases
@@ -51,7 +51,7 @@ const Home = () => {
             setTotalProfit(totalAmount - invAmount);
 
             // --- Top Products ---
-            const topRes = await API.get("/api/products/top-products");
+            const topRes = await API.get("/products/top-products");
             setTopProducts(topRes.data);
 
             // --- Chart ---
@@ -63,7 +63,7 @@ const Home = () => {
 
     const fetchChartData = async (weekly) => {
         try {
-            const endpoint = weekly ? "/api/invoices/chart-data-weekly" : "/api/invoices/chart-data";
+            const endpoint = weekly ? "/invoices/chart-data-weekly" : "/api/invoices/chart-data";
             const chartRes = await API.get(endpoint);
             const data = weekly
                 ? chartRes.data.filter(d => d.Sales > 0 || d.Purchase > 0)

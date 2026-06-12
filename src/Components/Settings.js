@@ -6,10 +6,6 @@ import './Settings.css'
 import API from "../api.js";
 import { useEffect } from "react";
 
-
-
-
-
 const Settings = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

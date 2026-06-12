@@ -57,7 +57,7 @@ const Invoice = () => {
     const fetchInvoices = async (pageNum = 1, searchTerm = "") => {
         setLoading(true);
         try {
-            const res = await API.get(`/api/invoices`, {
+            const res = await API.get(`/invoices`, {
                 params: { page: pageNum, search: searchTerm }
             });
             setInvoices(res.data.invoices);
@@ -72,7 +72,7 @@ const Invoice = () => {
 
     const fetchStats = async () => {
         try {
-            const res = await API.get("/api/invoices/stats");
+            const res = await API.get("/invoices/stats");
             setStats(res.data);
         } catch (err) {
             console.error("Failed to fetch invoice stats:", err);
@@ -88,7 +88,7 @@ const Invoice = () => {
     const handleToggleStatus = async (invoice) => {
         if (invoice.status === "paid") return;
         try {
-            await API.patch(`/api/invoices/${invoice._id}/status`, { status: "paid" });
+            await API.patch(`/invoices/${invoice._id}/status`, { status: "paid" });
             setInvoices(prev => prev.map(inv =>
                 inv._id === invoice._id ? { ...inv, status: "paid" } : inv
             ));
@@ -100,7 +100,7 @@ const Invoice = () => {
 
     const handleDelete = async () => {
         try {
-            await API.delete(`/api/invoices/${deleteInvoice._id}`);
+            await API.delete(`/invoices/${deleteInvoice._id}`);
             setDeleteInvoice(null);
             setEllipsisOpenId(null);
             fetchInvoices(page, search);

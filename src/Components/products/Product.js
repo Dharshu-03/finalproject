@@ -50,7 +50,7 @@ const Product = () => {
 
     const fetchStats = async () => {
         try {
-            const res = await API.get("/api/products/stats");
+            const res = await API.get("/products/stats");
             setStats(res.data);
         } catch (err) {
             console.error("Failed to fetch stats:", err);
@@ -62,7 +62,7 @@ const Product = () => {
         if (buyQuantity > selectedProduct.quantity) return alert("Not enough stock");
 
         try {
-            await API.patch(`/api/products/${selectedProduct._id}/buy`, {
+            await API.patch(`/products/${selectedProduct._id}/buy`, {
                 quantity: Number(buyQuantity)
             });
             alert("Purchase successful");
@@ -78,7 +78,7 @@ const Product = () => {
     const fetchProducts = async (pageNum = 1, searchTerm = "") => {
         setLoading(true);
         try {
-            const res = await API.get(`/api/products`, {
+            const res = await API.get(`/products`, {
                 params: { page: pageNum, search: searchTerm }
             });
             setProducts(res.data.products);
@@ -128,7 +128,7 @@ const Product = () => {
         const formData = new FormData();
         formData.append("file", csvFile);
         try {
-            const res = await API.post("/api/products/upload-csv", formData, {
+            const res = await API.post("/products/upload-csv", formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
             console.log(res.data);
@@ -249,6 +249,8 @@ const Product = () => {
                                     )}
                                 </tbody>
                             </table>
+
+
                         )}
 
                         {/* Hide pagination when searching */}
