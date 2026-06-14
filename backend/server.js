@@ -32,11 +32,11 @@ app.use("/api/products", productRoutes);
 app.use("/api/invoices", invoiceRoutes);
 
 // ✅ Serve React build
-app.use(express.static(path.join(__dirname, "build")));
+// app.use(express.static(path.join(__dirname, "build")));
 
-app.use((req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+// app.use((req, res) => {
+//     res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
 
 // ✅ PORT FIX (VERY IMPORTANT)
 const PORT = process.env.PORT || 5000;
