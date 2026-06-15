@@ -12,7 +12,7 @@ import Setting from './Components/Settings';
 import Invoice from './Components/Invoice';
 import Stats from './Components/Stats';
 
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (

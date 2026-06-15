@@ -27,7 +27,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchStats();
-    }, []);
+    }, [fetchStats]);
 
     const fetchStats = async () => {
         try {
@@ -63,7 +63,7 @@ const Home = () => {
 
     const fetchChartData = async (weekly) => {
         try {
-            const endpoint = weekly ? "/invoices/chart-data-weekly" : "/api/invoices/chart-data";
+            const endpoint = weekly ? "/invoices/chart-data-weekly" : "/invoices/chart-data";
             const chartRes = await API.get(endpoint);
             const data = weekly
                 ? chartRes.data.filter(d => d.Sales > 0 || d.Purchase > 0)

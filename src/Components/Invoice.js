@@ -21,7 +21,7 @@ const Invoice = () => {
 
     // Popup states
     const [ellipsisOpenId, setEllipsisOpenId] = useState(null);
-    const [statusPopupId, setStatusPopupId] = useState(null);
+
     const [viewInvoice, setViewInvoice] = useState(null);
     const [deleteInvoice, setDeleteInvoice] = useState(null);
     const [deletePopupPos, setDeletePopupPos] = useState({ top: 0, left: 0 });
@@ -321,13 +321,13 @@ const Invoice = () => {
                     <div className="invoice-view-popup" onClick={(e) => e.stopPropagation()}>
                         <div className="invoice-view-actions">
                             <div className="inv-action-btn close-btn">
-                                <img src='/images/close.png' onClick={() => setViewInvoice(null)} />
+                                <img src='/images/close.png' alt='aaaa' onClick={() => setViewInvoice(null)} />
                             </div>
                             <div className='inv-action-btn download-btn'>
-                                <img src='/images/dow.png' onClick={handleDownload} />
+                                <img src='/images/dow.png' alt='aaaa' onClick={handleDownload} />
                             </div>
                             <div className='inv-action-btn print-btn'>
-                                <img src='/images/print.png' onClick={handlePrint} />
+                                <img src='/images/print.png' alt='aaaa' onClick={handlePrint} />
                             </div>
                         </div>
 

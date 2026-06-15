@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import AuthLayout from './Layout'
 import { useLocation } from "react-router-dom";
@@ -8,7 +7,6 @@ import { useLocation } from "react-router-dom";
 function Otp() {
     const [password, setOtp] = useState("");
     const navigate = useNavigate();
-    const [error, setError] = useState("");
     const location = useLocation();
     const email = location.state?.email;
     const handleSubmit = async (e) => {

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import AuthLayout from './Layout'
 import { useLocation } from "react-router-dom";
@@ -19,15 +18,6 @@ function Reset() {
         if (p.length < 8) return setError("Too short");
         if (p !== c) return setError("Mismatch");
 
-        try {
-            const res = await API.post("/auth/reset", {
-                email,
-                password: p
-            });
-        }
-        catch (err) {
-            setError(err.response?.data?.msg || "Login failed");
-        }
         alert("Password reset");
         navigate("/");
     };

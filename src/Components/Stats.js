@@ -16,7 +16,7 @@ const Stats = () => {
 
     useEffect(() => {
         fetchStats();
-    }, []);
+    }, [fetchStats]);
 
 
 

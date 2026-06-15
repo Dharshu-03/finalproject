@@ -16,7 +16,7 @@ const Product = () => {
     const [loading, setLoading] = useState(false);
     const [showSimulatePopup, setShowSimulatePopup] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [buyQuantity, setBuyQuantity] = useState("");
+    const [buyQuantity, setBuyQuantity] = useState(0);
     const [stats, setStats] = useState({
         categories: 0,
         totalProducts: 0,

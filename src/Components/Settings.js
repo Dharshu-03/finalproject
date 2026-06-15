@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import Nav from './Navbar.js'
 import './Settings.css'
 import API from "../api.js";
@@ -13,7 +11,7 @@ const Settings = () => {
     const [fname, setfname] = useState("");
     const [lname, setlname] = useState("");
     const [error, setError] = useState("");
-    const navigate = useNavigate();
+
 
 
     useEffect(() => {
