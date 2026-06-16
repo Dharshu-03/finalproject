@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 
 
 function Otp() {
+
     const [password, setOtp] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
@@ -17,7 +18,7 @@ function Otp() {
         }
 
     }
-
+    const [error, setError] = useState("");
     return (
         <AuthLayout image="/images/otppic.png" text="">
 
